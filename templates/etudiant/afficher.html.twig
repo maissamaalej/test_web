@@ -1,0 +1,28 @@
+{%if etudiant is empty%}
+<h1>table is empty</h1>
+{%endif%}
+{%if etudiant is null%}
+<h1>table is null</h1>
+{%endif%}
+<table border=1>
+<tr>
+<th>id</th>
+<th>nom</th>
+<th>prenom</th>
+<th>email</th>
+<th>update</th>
+<th>delete</th>
+</tr>
+
+{%for etudiant in etudiant%}
+<tr>
+   <td>{{etudiant.id}}</td> 
+   <td>{{etudiant.nom}}</td> 
+   <td>{{etudiant.prenom}}</td> 
+   <td>{{etudiant.email}}</td> 
+ <td> <a href="{{ path('etudiant_update', {'id': etudiant.id}) }}">update</a></td>  
+  <td> <a href="{{ path('etudiant_delete', {'id': etudiant.id}) }}" onclick="return confirm('Are you sure you want to delete this student?');">delete</a></td>
+  {% endfor %}
+  <a href="{{path('etudiant_add')}}" > ajouter </a>
+  
+  
